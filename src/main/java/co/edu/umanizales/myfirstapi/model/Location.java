@@ -7,7 +7,6 @@ import lombok.Setter;
 @Setter
 
 public class Location {
-    Location manizales = new Location("170001", "Manizales");
     private String code;
     private String description;
 
