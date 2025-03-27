@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class LocationController {
 
     @GetMapping
-    public String getLocation(){
+    public Location getLocation(){
         Location manizales = new Location("170001", "Manizales");
 
-        return "Krakovia";
+        return manizales;
     }
 }
