@@ -11,20 +11,22 @@ import org.springframework.web.bind.annotation.RestController;
 
 public class SellerController {
     @GetMapping
-    public String getSeller(){
+    public Seller getSeller(){
 
-        //Instanciar 5 Sellers
+        Location manizales = new Location("17001", "Manizales");
+        Location leticia = new Location("91007", "Leticia");
+        Location medellin = new Location("05001", "Medellin");
+        Location cali = new Location("76001", "Cali");
+        Location bogota = new Location("11001", "Bogota, D.C.");
 
-        Seller CarlosLoaiza = new Seller("102342195", "Carlos", "Loaiza", new Location("170001", "Manizales"),"Male", "34");
+        Seller CarlosLoaiza = new Seller("102342195", "Carlos", "Loaiza", manizales,"Male", (byte) 21);
+        Seller FernandoGonzalez = new Seller("1049832950", "Fernando", "Gonzalez", leticia, "Male", (byte) 20);
+        Seller RicardoTepes = new Seller("ASCII3241", "Ricardo", "Tepes", medellin,"Male", (byte) 40);
+        Seller JoaquinPerez = new Seller("B54213340", "Joaquin", "Perez", cali,"Male", (byte) 50);
+        Seller BrunoDiaz = new Seller("A4439127", "Bruno", "Diaz", bogota,"Male", (byte) 52);
 
-        Seller FernandoGonzalez = new Seller("1049832950", "Fernando", "Gonzalez", new Location("91001", "Leticia"), "Male", "20");
+        return CarlosLoaiza;
 
-        Seller RicardoTepes = new Seller("ASCII3241", "Ricardo", "Tepes", new Location("05001", "Madellin"),"Male", "40");
 
-        Seller JoaquinPerez = new Seller("B54213340", "Joaquin", "Perez", new Location("76001", "Cali"),"Male", "50");
-
-        Seller BrunoDiaz = new Seller("A4439127", "Bruno", "Diaz", new Location("11001", "Bogota, D.C."),"Male", "55");
-
-        return "sell successful";
     }
 }

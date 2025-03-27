@@ -13,9 +13,9 @@ public class Seller {
     private String lastName;
     private Location city;
     private String gender;
-    private String age;
+    private byte age;
 
-    public Seller(String identification, String name, String lastName, Location city, String gender, String age) {
+    public Seller(String identification, String name, String lastName, Location city, String gender, byte age) {
         this.identification = identification;
         this.name = name;
         this.lastName = lastName;
