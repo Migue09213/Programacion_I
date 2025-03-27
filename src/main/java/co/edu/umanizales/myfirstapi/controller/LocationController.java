@@ -12,8 +12,8 @@ public class LocationController {
 
     @GetMapping
     public Location getLocation(){
-        Location manizales = new Location("170001", "Manizales");
+        Location manizales1 = new Location("170001", "Manizales");
 
-        return manizales;
+        return manizales1;
     }
 }
