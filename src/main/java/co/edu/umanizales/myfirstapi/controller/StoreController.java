@@ -1,5 +1,7 @@
 package co.edu.umanizales.myfirstapi.controller;
 
+import co.edu.umanizales.myfirstapi.model.Location;
+import co.edu.umanizales.myfirstapi.model.Store;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class StoreController {
 
     @GetMapping
-    public String getStore(){
-        return "5om3 357oR3";
+    public Store getStore(){
+
+        Location manizales = new Location("17001", "Manizales");
+
+        Store StoreA = new Store ("0001", "MercaSeguro", manizales, "Kr. 23 #35 - 24a");
+
+        return StoreA;
     }
 }

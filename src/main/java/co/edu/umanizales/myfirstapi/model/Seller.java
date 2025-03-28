@@ -8,19 +8,19 @@ import lombok.Setter;
 
 public class Seller {
 
-    private String identification;
-    private String name;
-    private String lastName;
+    private String sellerID;
+    private String sellerName;
+    private String SellerLastName;
     private Location city;
-    private String gender;
-    private byte age;
+    private String SellerGender;
+    private byte SellerAge;
 
-    public Seller(String identification, String name, String lastName, Location city, String gender, byte age) {
-        this.identification = identification;
-        this.name = name;
-        this.lastName = lastName;
+    public Seller(String sellerID, String sellerName, String sellerLastName, Location city, String sellerGender, byte sellerAge) {
+        this.sellerID = sellerID;
+        this.sellerName = sellerName;
+        this.SellerLastName = sellerLastName;
         this.city = city;
-        this.gender = gender;
-        this.age = age;
+        this.SellerGender = sellerGender;
+        this.SellerAge = sellerAge;
     }
 }
