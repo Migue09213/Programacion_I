@@ -3,7 +3,6 @@ package co.edu.umanizales.myfirstapi.Repository;
 import co.edu.umanizales.myfirstapi.model.Municipios;
 import org.springframework.stereotype.Repository;
 
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,7 +49,7 @@ public class MunicipiosRepository {
         return Collections.unmodifiableList(municipios);
     }
 
-    public Optional<Municipios> getMunicipioByCodigo(String municipiosCode) {
+    public Optional<Municipios> getMunicipioByCode(String municipiosCode) {
         return municipios.stream()
                 .filter(m -> m.getMunicipiosCode().equals(municipiosCode))
                 .findFirst();
