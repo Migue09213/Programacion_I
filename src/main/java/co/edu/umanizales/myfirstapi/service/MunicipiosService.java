@@ -5,9 +5,6 @@ import co.edu.umanizales.myfirstapi.model.Municipios;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-
-import static java.util.spi.ToolProvider.findFirst;
 
 @Service
 
@@ -39,4 +36,8 @@ public class MunicipiosService {
                 .filter(m -> m.getMunicipiosMunicipio().equalsIgnoreCase(municipio))
                 .toList();
     }*/
+
+    public List<Municipios> getMunicipiosByCapital() {
+        return municipiosRepository.getMunicipiosByCapital();
+    }
 }

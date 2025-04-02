@@ -20,7 +20,7 @@ public class MunicipiosRepository {
     }
 
     private void cargarMunicipios() {
-        String archivo = "DivipolaMunicipios"; // No necesitamos el path completo
+        String archivo = "DivipolaMunicipios";
         System.out.println("Intentando cargar archivo: " + archivo);
 
         try (InputStream is = getClass().getClassLoader().getResourceAsStream(archivo);
@@ -54,5 +54,11 @@ public class MunicipiosRepository {
         return municipios.stream()
                 .filter(m -> m.getMunicipiosCode().equals(municipiosCode))
                 .findFirst();
+    }
+
+    public List<Municipios> getMunicipiosByCapital() {
+        return municipios.stream()
+                .filter(m -> m.getMunicipiosCode().endsWith("001"))
+                .toList();
     }
 }

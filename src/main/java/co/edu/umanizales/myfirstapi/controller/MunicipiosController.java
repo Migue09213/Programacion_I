@@ -38,4 +38,9 @@ public class MunicipiosController {
         municipiosService.imprimirMunicipios();
         return municipiosService.getMunicipiosByDepartamento(departamento);
     }
+
+    @GetMapping(path = "/capitales")
+    public List<Municipios> getMunicipiosByCapitales() {
+        return municipiosService.getMunicipiosByCapital();
+    }
 }
