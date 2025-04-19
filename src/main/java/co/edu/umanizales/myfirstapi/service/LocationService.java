@@ -35,7 +35,7 @@ public class LocationService {
     public List<Location> getLocationsByInitialLetter(String initialLetter) {
         List<Location> locationsByInitial = new ArrayList<>();
         for (Location location : locationRepository.getAllLocations()) {
-            if (location.getName().startsWith(initialLetter)){
+            if (location.getName().startsWith(initialLetter)) {
                 locationsByInitial.add(location);
             }
         }
@@ -45,12 +45,12 @@ public class LocationService {
     public Location getLocationByDepartmentCode(String departmentCode) {
         List<Location> locationsByDepartment = new ArrayList<>();
         for (Location location : locationRepository.getAllLocations()) {
-            if (location.getCode().startsWith(departmentCode)){
+            if (location.getCode().startsWith(departmentCode)) {
                 locationsByDepartment.add(location);
             }
         }
 
-        if (!locationsByDepartment.isEmpty()){
+        if (!locationsByDepartment.isEmpty()) {
             return locationsByDepartment.get(0); //devolverá lo primero que encuentre y coincida
         } else {
             System.out.println("No existe localidad con código: " + departmentCode);
@@ -59,26 +59,30 @@ public class LocationService {
     }
 
     public List<Location> getAllDepartments() {
-        List<Location> departments = new ArrayList<>();
-        for (Location location : locationRepository.getAllLocations()) {
-            if (location.getCode().length() == 2) {
-                departments.add(location);
-            }
-        }
-        return departments;
+        return locationRepository.getAllDepartments();
     }
 
     public Location getDepartmentByCode(String code) {
-            if (code.length() != 2){
-                System.out.println("Código: " + code + " no es válido para buscar departamentos. por favor ingrese un código de 2 dígitos"); //Si el código es inválido mostrará un error
-                return null;
-            }
-        for (Location location : locationRepository.getAllLocations()) {
+        if (code.length() != 2) {
+            System.out.println("Código: " + code + " no es válido para buscar departamentos. por favor ingrese un código de 2 dígitos"); //Si el código es inválido mostrará un error
+            return null;
+        }
+        for (Location location : locationRepository.getAllDepartments()) {
             if (location.getCode().equals(code)) {
                 return location;
             }
         }
         System.out.println("Departmento no encontrado con código: " + code);
         return null;
+    }
+
+    public List<Location> getCapitals() {
+        List<Location> capitals = new ArrayList<>();
+        for (Location location : locationRepository.getAllLocations()) {
+            if (location.getCode().endsWith("001")) {
+                capitals.add(location);
+            }
+        }
+        return capitals;
     }
 }

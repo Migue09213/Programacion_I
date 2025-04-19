@@ -14,7 +14,9 @@ import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Repository
@@ -22,6 +24,8 @@ import java.util.List;
 public class LocationRepository {
 
     private List<Location> locations;
+    private List<Location> departmentLocation;
+    Set<String> seenDepartments;
 
     @Value("${locations_filename}")
     private String locationsFileName;
@@ -29,13 +33,16 @@ public class LocationRepository {
     @PostConstruct
     public void loadLocationsFromCSV() throws IOException, URISyntaxException {
         locations = new ArrayList<>();
+        departmentLocation = new ArrayList<>();
+        seenDepartments = new HashSet<>();
 
         Path filePath = Paths.get(ClassLoader.getSystemResource(locationsFileName).toURI());
 
         try (BufferedReader br = new BufferedReader(new FileReader(filePath.toFile()))) { //<- esto evita usar un br.close
 
             String[] tokens;
-            String code, name, department;
+            String code, name;
+            String departmentCode, departmentName;
 
             String line;
             boolean firstLine = true;
@@ -46,16 +53,25 @@ public class LocationRepository {
                     continue;
                 }
                 tokens = line.split(",");
+                //código y nombre para el municipio
                 if (tokens.length >= 4) {
                     code = tokens[2];
                     name = tokens[3];
-                    department = tokens[1];
                     locations.add(new Location(code, name));
+
+                    //Código y nombre para el departamento
+                    departmentCode = tokens[0];
+                    departmentName = tokens[1];
+
+                    if (!seenDepartments.contains(departmentCode)) {
+                        departmentLocation.add(new Location(departmentCode, departmentName));
+                        seenDepartments.add(departmentCode);
+                    }
                 }
             }
 
             System.out.println("> Buscando Archivo: " + "|" + locationsFileName + "|");
-            System.out.println("> Archivo Cargado: " + locations.size() + " Elementos encontrados");
+            System.out.println("> Archivo Cargado con éxito, " + locations.size() + " Elementos encontrados");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -81,6 +97,16 @@ public class LocationRepository {
         for (Location location : locations) {
             if (location.getName().equalsIgnoreCase(name)) {
                 results.add(location);
+            }
+        }
+        return results;
+    }
+
+    public List<Location> getAllDepartments() {
+        List<Location> results = new ArrayList<>();
+        for (Location dLocation : departmentLocation) {
+            if (dLocation.getCode().length() == 2) {
+                results.add(dLocation);
             }
         }
         return results;
