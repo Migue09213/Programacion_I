@@ -42,20 +42,14 @@ public class LocationService {
         return locationsByInitial;
     }
 
-    public Location getLocationByDepartmentCode(String departmentCode) {
+    public List<Location> getLocationByDepartmentCode(String departmentCode) {
         List<Location> locationsByDepartment = new ArrayList<>();
         for (Location location : locationRepository.getAllLocations()) {
             if (location.getCode().startsWith(departmentCode)) {
                 locationsByDepartment.add(location);
             }
         }
-
-        if (!locationsByDepartment.isEmpty()) {
-            return locationsByDepartment.get(0); //devolverá lo primero que encuentre y coincida
-        } else {
-            System.out.println("No existe localidad con código: " + departmentCode);
-            return null;
-        }
+        return locationsByDepartment;
     }
 
     public List<Location> getAllDepartments() {

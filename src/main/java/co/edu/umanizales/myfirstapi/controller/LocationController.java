@@ -33,7 +33,7 @@ public class LocationController {
     }
 
     @GetMapping(path = "/code/{code}")
-    public Location getLocation(@PathVariable String code) {
+    public Location getLocationByCode(@PathVariable String code) {
         return locationService.getLocationByCode(code);
     }
 
@@ -48,7 +48,7 @@ public class LocationController {
     }
 
     @GetMapping(path = "/department_code/{dCode}")
-    public Location getLocationByDepartmentCode(@PathVariable String dCode) {
+    public List<Location> getLocationByDepartmentCode(@PathVariable String dCode) {
         return locationService.getLocationByDepartmentCode(dCode);
     }
 
