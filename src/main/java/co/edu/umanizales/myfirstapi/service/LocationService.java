@@ -15,10 +15,6 @@ public class LocationService {
 
     private final LocationRepository locationRepository;
 
-    public LocationService() {
-        this.locationRepository = new LocationRepository();
-    }
-
     public LocationService(LocationRepository locationRepository) {
         this.locationRepository = locationRepository;
     }
