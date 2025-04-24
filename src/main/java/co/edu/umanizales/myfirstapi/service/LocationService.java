@@ -78,4 +78,14 @@ public class LocationService {
         }
         return capitals;
     }
+
+    public List<Location> getLocationByParameters(String initialLetter, String finalLetter) {
+        List<Location> locations = new ArrayList<>();
+        for (Location location : locationRepository.getAllLocations()) {
+            if (location.getName().startsWith(initialLetter) && location.getName().endsWith(finalLetter)) {
+                locations.add(location);
+            }
+        }
+        return locations;
+    }
 }

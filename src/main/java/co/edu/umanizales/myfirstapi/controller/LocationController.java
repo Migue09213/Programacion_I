@@ -24,6 +24,7 @@ public class LocationController {
 
     }
     */
+
     @Autowired
     private LocationService locationService;
 
@@ -65,5 +66,10 @@ public class LocationController {
     @GetMapping(path = "/capitals")
     public List<Location> getCapitals() {
         return locationService.getCapitals();
+    }
+
+    @GetMapping(path = "/startsWith = {initialLetter}/endsWith = {finalLetter}")
+    public List<Location> getParameterA(@PathVariable String initialLetter, @PathVariable String finalLetter) {
+        return locationService.getLocationByParameters(initialLetter, finalLetter);
     }
 }
