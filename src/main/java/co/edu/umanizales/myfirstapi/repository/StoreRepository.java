@@ -22,7 +22,7 @@ import java.util.List;
 public class StoreRepository {
 
     private List<Store> storeList;
-    private LocationRepository locationRepository;
+    private final LocationRepository locationRepository;
 
     public StoreRepository(LocationRepository locationRepository) {
         this.locationRepository = locationRepository;
