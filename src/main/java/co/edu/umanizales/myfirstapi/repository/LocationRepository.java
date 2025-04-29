@@ -95,7 +95,7 @@ public class LocationRepository {
     public List<Location> getLocationsByName(String name) {
         List<Location> results = new ArrayList<>();
         for (Location location : locations) {
-            if (location.getName().equalsIgnoreCase(name)) {
+            if (location.getName().contains(name.toUpperCase())) {
                 results.add(location);
             }
         }
