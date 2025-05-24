@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "5a69602f-964d-4d32-ba47-5db65f61e141",
+		"name": "Prog I - MyFirstAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43058598"
+	},
+	"item": [
+		{
+			"name": "Location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/location/name/MANIZALES",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"name",
+						"MANIZALES"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Location by name",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Location by code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/location/code/17001",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"code",
+						"17001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Location by Initial",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/location/initial/M",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"initial",
+						"M"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Location by d_Code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/location/department_code/17",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"department_code",
+						"17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Locations departments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/location/departments",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"departments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Loccations by departments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/location/department/17",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"department",
+						"17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Locations capitals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/location/capitals",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"location",
+						"capitals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Locations by parameters",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Seller",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/seller",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "set Seller",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"sellerID\": \"S007\",\r\n        \"sellerName\": \"Manolo\",\r\n        \"sellerLastName\": \"Cervantez\",\r\n        \"city\": {\r\n            \"code\": \"17001\",\r\n            \"description\": \"Bogotá\"\r\n        },\r\n        \"sellerGender\": \"M\",\r\n        \"sellerAge\": 50\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/seller",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seller by Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/seller/id/S006",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"id",
+						"S006"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seller by name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/seller/name/María",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"name",
+						"María"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seller by LastName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/seller/lastName/Joaquinez",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"lastName",
+						"Joaquinez"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seller by city code",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "Seller by age",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/seller/age/50",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"age",
+						"50"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Seller by gender",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/seller/gender/M",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"gender",
+						"M"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/store",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "set Store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"storeCode\": \"06\",\r\n        \"storeName\": \"Manolo's\",\r\n        \"city\": {\r\n            \"code\": \"17001\",\r\n            \"description\": \"MANIZALES\"\r\n        },\r\n        \"address\": \"Kr. 21 #1 - 112\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/store",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store by code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/store/code/06",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"code",
+						"06"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store by Name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/store/name/Mercaldas",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"name",
+						"Mercaldas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Store by address",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/store/address/Kr. 9 #5 - 12",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"store",
+						"address",
+						"Kr. 9 "
+					],
+					"hash": "5 - 12"
+				}
+			},
+			"response": []
+		}
+	]
+}
