@@ -1,26 +1,21 @@
 package co.edu.umanizales.myfirstapi.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
 
 public class Seller {
 
     private String sellerID;
     private String sellerName;
-    private String SellerLastName;
+    private String sellerLastName;
     private Location city;
-    private String SellerGender;
-    private byte SellerAge;
+    private String sellerGender;
+    private byte sellerAge;
 
-    public Seller(String sellerID, String sellerName, String sellerLastName, Location city, String sellerGender, byte sellerAge) {
-        this.sellerID = sellerID;
-        this.sellerName = sellerName;
-        this.SellerLastName = sellerLastName;
-        this.city = city;
-        this.SellerGender = sellerGender;
-        this.SellerAge = sellerAge;
-    }
+
 }

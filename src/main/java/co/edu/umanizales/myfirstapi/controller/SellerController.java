@@ -1,33 +1,88 @@
 package co.edu.umanizales.myfirstapi.controller;
 
 import co.edu.umanizales.myfirstapi.model.Seller;
-import co.edu.umanizales.myfirstapi.model.Location;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import co.edu.umanizales.myfirstapi.service.SellerService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/seller")
-
 public class SellerController {
+
+    private final SellerService sellerService;
+
+    public SellerController(SellerService sellerService) {
+        this.sellerService = sellerService;
+    }
+
     @GetMapping
-    public List<Seller> getSeller(){
-        List<Seller> sellers = new ArrayList<>();
+    public ResponseEntity<List<Seller>> getAllSellers() {
+        return ResponseEntity.ok(sellerService.getAllSellers());
+    }
 
-        Location manizales = new Location("17001", "Manizales");
-        Location pereira = new Location("66001", "Pereira");
-        Location bogota = new Location("11001", "Bogota, D.C.");
+    @PostMapping
+    public ResponseEntity<String> addSeller(@RequestBody Seller seller) {
+        String result = sellerService.addSeller(seller);
+        if (result.startsWith("Error")) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(result);
+    }
 
-        sellers.add(new Seller("102342195", "Carlos", "Loaiza", manizales,"Male", (byte) 21));
-        sellers.add(new Seller("1049832950", "Fernando", "Gonzalez", pereira, "Male", (byte) 20));
-        sellers.add(new Seller("ASCII3241", "Ricardo", "Tepes", bogota,"Male", (byte) 40));
-        sellers.add(new Seller("B54213340", "Joaquin", "Perez", manizales,"Male", (byte) 50));
-        sellers.add(new Seller("A4439127", "Bruno", "Diaz", bogota,"Male", (byte) 52));
+    @GetMapping(path = "/id/{id}")
+    public ResponseEntity<Seller> getSellerById(@PathVariable("id") String id) {
+        Seller seller = sellerService.getSellerById(id);
+        if (seller == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(seller);
+    }
 
-        return sellers;
+    @GetMapping(path = "/name/{name}")
+    public ResponseEntity<List<Seller>> getSellersByName(@PathVariable("name") String name) {
+        List<Seller> sellers = sellerService.getSellersByName(name);
+        if (sellers.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(sellers);
+    }
 
+    @GetMapping(path = "/lastName/{lastName}")
+    public ResponseEntity<List<Seller>> getSellersByLastName(@PathVariable("lastName") String lastName) {
+        List<Seller> sellers = sellerService.getSellersByLastName(lastName);
+        if (sellers.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(sellers);
+    }
+
+    @GetMapping(path = "/cityCode/{cityCode}")
+    public ResponseEntity<List<Seller>> getSellersByCity(@PathVariable("cityCode") String cityCode) {
+        List<Seller> sellers = sellerService.getSellersByCity(cityCode);
+        if (sellers.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(sellers);
+    }
+
+    @GetMapping(path = "/gender/{gender}")
+    public ResponseEntity<List<Seller>> getSellersByGender(@PathVariable("gender") String gender) {
+        List<Seller> sellers = sellerService.getSellersByGender(gender);
+        if (sellers.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(sellers);
+    }
+
+    @GetMapping(path = "/age/{age}")
+    public ResponseEntity<List<Seller>> getSellersByAge(@PathVariable("age") byte age) {
+        List<Seller> sellers = sellerService.getSellersByAge(age);
+        if (sellers.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(sellers);
     }
 }

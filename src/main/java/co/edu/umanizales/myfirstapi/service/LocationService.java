@@ -31,17 +31,17 @@ public class LocationService {
         return locationRepository.getLocationsByName(name);
     }
 
-    public List<Location> getLocationsByInitialLetter(String initialLetter) {
+    public List<Location> getLocationsByInitialLetter(char initialLetter) {
         List<Location> locationsByInitial = new ArrayList<>();
         for (Location location : locationRepository.getAllLocations()) {
-            if (location.getName().startsWith(initialLetter)) {
+            if (location.getDescription().startsWith(String.valueOf(initialLetter))) {
                 locationsByInitial.add(location);
             }
         }
         return locationsByInitial;
     }
 
-    public List<Location> getLocationByDepartmentCode(String departmentCode) {
+    public List<Location> getLocationsByDepartmentCode(String departmentCode) {
         List<Location> locationsByDepartment = new ArrayList<>();
         for (Location location : locationRepository.getAllLocations()) {
             if (location.getCode().startsWith(departmentCode)) {
@@ -79,13 +79,13 @@ public class LocationService {
         return capitals;
     }
 
-    public List<Location> getLocationByParameters(String initialLetter, String finalLetter) {
+    public List<Location> getLocationByParameters(char initialLetter, char finalLetter) {
         List<Location> locations = new ArrayList<>();
         for (Location location : locationRepository.getAllLocations()) {
-            if (location.getName().startsWith(initialLetter) && location.getName().endsWith(finalLetter)) {
-                locations.add(location);
+                if (location.getDescription().startsWith(String.valueOf(initialLetter)) && location.getDescription().endsWith(String.valueOf(finalLetter))) {
+                    locations.add(location);
             }
         }
-        return locations;
+            return locations;
     }
 }

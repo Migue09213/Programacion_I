@@ -1,18 +1,18 @@
 package co.edu.umanizales.myfirstapi.model;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 
-public class Location {
+public class Location extends Parameter {
 
-    private String code;
-    private String name;
+    public Location(String code, String description) {
+        this.code = code;
+        this.description = description;
+    }
 }
 
 

@@ -8,9 +8,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 
-public class Store {
+public class Store{
+
     private String storeCode;
     private String storeName;
     private Location city;
     private String address;
+
 }

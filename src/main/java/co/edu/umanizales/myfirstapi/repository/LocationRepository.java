@@ -24,8 +24,6 @@ import java.util.Set;
 public class LocationRepository {
 
     private List<Location> locations;
-    private List<Location> departmentLocation;
-    Set<String> seenDepartments;
 
     @Value("${locations_filename}")
     private String locationsFileName;
@@ -33,8 +31,7 @@ public class LocationRepository {
     @PostConstruct
     public void loadLocationsFromCSV() throws IOException, URISyntaxException {
         locations = new ArrayList<>();
-        departmentLocation = new ArrayList<>();
-        seenDepartments = new HashSet<>();
+        Set<String> seenDepartments = new HashSet<>();
 
         Path filePath = Paths.get(ClassLoader.getSystemResource(locationsFileName).toURI());
 
@@ -64,7 +61,7 @@ public class LocationRepository {
                     departmentName = tokens[1];
 
                     if (!seenDepartments.contains(departmentCode)) {
-                        departmentLocation.add(new Location(departmentCode, departmentName));
+                        locations.add(new Location(departmentCode, departmentName));
                         seenDepartments.add(departmentCode);
                     }
                 }
@@ -95,7 +92,7 @@ public class LocationRepository {
     public List<Location> getLocationsByName(String name) {
         List<Location> results = new ArrayList<>();
         for (Location location : locations) {
-            if (location.getName().contains(name.toUpperCase())) {
+            if (location.getDescription().contains(name.toUpperCase())) {
                 results.add(location);
             }
         }
@@ -104,7 +101,7 @@ public class LocationRepository {
 
     public List<Location> getAllDepartments() {
         List<Location> results = new ArrayList<>();
-        for (Location dLocation : departmentLocation) {
+        for (Location dLocation : locations) {
             if (dLocation.getCode().length() == 2) {
                 results.add(dLocation);
             }
